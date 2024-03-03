@@ -1,0 +1,6 @@
+# ninja log v5
+4	995	7311956547319686	CMakeFiles/Chip_8_Emulator.dir/main.cpp.obj	b03289372700efbc
+3	105	7311956616547541	Chip_8_Emulator.exe	e2342d8ecf6e6e7d
+1	153	7311956649976617	build.ninja	de7ba8e44b85046
+5	989	7311956746436735	CMakeFiles/Chip_8_Emulator.dir/main.cpp.obj	b03289372700efbc
+990	1092	7311956747421516	Chip_8_Emulator.exe	e2342d8ecf6e6e7d

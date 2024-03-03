@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "c:/Users/ozgur/CLionProjects/Chip-8_Emulator/cmake-build-debug"
+			"value" : "c:/Users/ozgur/GitHub/Chip-8_Emulator/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -575,7 +575,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/ozgur/CLionProjects/Chip-8_Emulator/cmake-build-debug/CMakeFiles/pkgRedirects"
+			"value" : "C:/Users/ozgur/GitHub/Chip-8_Emulator/cmake-build-debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -647,7 +647,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Users/ozgur/CLionProjects/Chip-8_Emulator"
+			"value" : "C:/Users/ozgur/GitHub/Chip-8_Emulator"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -1279,7 +1279,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/ozgur/CLionProjects/Chip-8_Emulator/cmake-build-debug"
+			"value" : "C:/Users/ozgur/GitHub/Chip-8_Emulator/cmake-build-debug"
 		},
 		{
 			"name" : "Chip_8_Emulator_IS_TOP_LEVEL",
@@ -1303,7 +1303,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/ozgur/CLionProjects/Chip-8_Emulator"
+			"value" : "C:/Users/ozgur/GitHub/Chip-8_Emulator"
 		},
 		{
 			"name" : "_CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED",
