@@ -14,9 +14,7 @@
 		"commands" : 
 		[
 			"add_executable",
-			"link_directories",
-			"target_link_libraries",
-			"include_directories"
+			"target_link_libraries"
 		],
 		"files" : 
 		[
@@ -30,25 +28,13 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 13,
+				"line" : 6,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 11,
-				"parent" : 0
-			},
-			{
-				"command" : 2,
-				"file" : 0,
-				"line" : 15,
-				"parent" : 0
-			},
-			{
-				"command" : 3,
-				"file" : 0,
-				"line" : 9,
+				"line" : 8,
 				"parent" : 0
 			}
 		]
@@ -60,17 +46,6 @@
 			[
 				{
 					"fragment" : "-g -fdiagnostics-color=always"
-				}
-			],
-			"includes" : 
-			[
-				{
-					"backtrace" : 4,
-					"path" : "C:/Users/ozgur/SDL/include"
-				},
-				{
-					"backtrace" : 4,
-					"path" : "C:/Users/ozgur/GitHub/Chip-8_Emulator/include"
 				}
 			],
 			"language" : "CXX",
@@ -103,21 +78,16 @@
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "-LC:\\Users\\ozgur\\SDL\\lib",
-				"role" : "libraryPath"
-			},
-			{
-				"backtrace" : 3,
 				"fragment" : "-lmingw32",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 3,
+				"backtrace" : 2,
 				"fragment" : "-lSDL2main",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 3,
+				"backtrace" : 2,
 				"fragment" : "-lSDL2",
 				"role" : "libraries"
 			},

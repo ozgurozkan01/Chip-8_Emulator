@@ -1,6 +1,4 @@
 # ninja log v5
-4	995	7311956547319686	CMakeFiles/Chip_8_Emulator.dir/main.cpp.obj	b03289372700efbc
-3	105	7311956616547541	Chip_8_Emulator.exe	e2342d8ecf6e6e7d
-1	153	7311956649976617	build.ninja	de7ba8e44b85046
-5	989	7311956746436735	CMakeFiles/Chip_8_Emulator.dir/main.cpp.obj	b03289372700efbc
-990	1092	7311956747421516	Chip_8_Emulator.exe	e2342d8ecf6e6e7d
+4	966	7311958715057973	CMakeFiles/Chip_8_Emulator.dir/main.cpp.obj	6f866c0209b1bd1
+966	1062	7311958715980935	Chip_8_Emulator.exe	1164b82d4ea41a27
+1	144	7311958786768337	build.ninja	de7ba8e44b85046
