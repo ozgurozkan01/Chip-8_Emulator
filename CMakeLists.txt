@@ -3,7 +3,11 @@ project(Chip_8_Emulator)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(Chip_8_Emulator main.cpp)
+add_executable(Chip_8_Emulator
+        src/main.cpp
+        src/Chip8.cpp
+        src/Chip8.h
+)
 
 target_link_libraries(
         ${PROJECT_NAME}

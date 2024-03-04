@@ -49,11 +49,17 @@ cmake_ninja_workdir = C$:/Users/ozgur/GitHub/Chip-8_Emulator/cmake-build-debug/
 
 build cmake_object_order_depends_target_Chip_8_Emulator: phony || CMakeFiles/Chip_8_Emulator.dir
 
-build CMakeFiles/Chip_8_Emulator.dir/main.cpp.obj: CXX_COMPILER__Chip_8_Emulator_unscanned_Debug C$:/Users/ozgur/GitHub/Chip-8_Emulator/main.cpp || cmake_object_order_depends_target_Chip_8_Emulator
-  DEP_FILE = CMakeFiles\Chip_8_Emulator.dir\main.cpp.obj.d
+build CMakeFiles/Chip_8_Emulator.dir/src/main.cpp.obj: CXX_COMPILER__Chip_8_Emulator_unscanned_Debug C$:/Users/ozgur/GitHub/Chip-8_Emulator/src/main.cpp || cmake_object_order_depends_target_Chip_8_Emulator
+  DEP_FILE = CMakeFiles\Chip_8_Emulator.dir\src\main.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\Chip_8_Emulator.dir
-  OBJECT_FILE_DIR = CMakeFiles\Chip_8_Emulator.dir
+  OBJECT_FILE_DIR = CMakeFiles\Chip_8_Emulator.dir\src
+
+build CMakeFiles/Chip_8_Emulator.dir/src/Chip8.cpp.obj: CXX_COMPILER__Chip_8_Emulator_unscanned_Debug C$:/Users/ozgur/GitHub/Chip-8_Emulator/src/Chip8.cpp || cmake_object_order_depends_target_Chip_8_Emulator
+  DEP_FILE = CMakeFiles\Chip_8_Emulator.dir\src\Chip8.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Chip_8_Emulator.dir
+  OBJECT_FILE_DIR = CMakeFiles\Chip_8_Emulator.dir\src
 
 
 # =============================================================================
@@ -63,7 +69,7 @@ build CMakeFiles/Chip_8_Emulator.dir/main.cpp.obj: CXX_COMPILER__Chip_8_Emulator
 #############################################
 # Link the executable Chip_8_Emulator.exe
 
-build Chip_8_Emulator.exe: CXX_EXECUTABLE_LINKER__Chip_8_Emulator_Debug CMakeFiles/Chip_8_Emulator.dir/main.cpp.obj
+build Chip_8_Emulator.exe: CXX_EXECUTABLE_LINKER__Chip_8_Emulator_Debug CMakeFiles/Chip_8_Emulator.dir/src/main.cpp.obj CMakeFiles/Chip_8_Emulator.dir/src/Chip8.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lmingw32  -lSDL2main  -lSDL2  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Chip_8_Emulator.dir
