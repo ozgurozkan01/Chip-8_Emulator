@@ -12,6 +12,16 @@ public:
 
     void init();
 private:
+    unsigned short opcode; // operation code
+    unsigned short I; // index register
+    unsigned short  pc; // program counter
+
+    unsigned char RAM[4096]; // memory
+    unsigned char register_V[16];
+    unsigned char pixels[64 * 32]; // pixel amount
+
+    unsigned char delayTimer;
+    unsigned char soundTimer;
 
 };
 
