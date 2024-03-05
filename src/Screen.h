@@ -19,10 +19,15 @@ public:
     void update();
     bool init();
 private:
+    uint32_t foregroundColor;
+    uint32_t backgroundColor;
+
+    int hz;
     SDL_bool windowShouldBeOpen;
 
     SDL_Window* window;
     SDL_Renderer* renderer;
+    SDL_Texture* texture;
 
     void processEvent();
     void render();
