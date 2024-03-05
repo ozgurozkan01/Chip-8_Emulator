@@ -5,8 +5,27 @@
 #ifndef CHIP_8_EMULATOR_SCREEN_H
 #define CHIP_8_EMULATOR_SCREEN_H
 
+#include "SDL2/SDL.h"
 
 class Screen {
+public:
+    int screenWidth;
+    int screenHeight;
+    const char* projectName;
+
+    Screen(int _screenWidth, int _screenHeight);
+    ~Screen();
+
+    void update();
+    bool init();
+private:
+    SDL_bool windowShouldBeOpen;
+
+    SDL_Window* window;
+    SDL_Renderer* renderer;
+
+    void processEvent();
+    void render();
 };
 
 
