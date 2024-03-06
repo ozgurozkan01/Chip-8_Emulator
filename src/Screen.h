@@ -21,6 +21,7 @@ public:
 private:
     uint32_t foregroundColor;
     uint32_t backgroundColor;
+    int scaleFactor;
 
     int hz;
     SDL_bool windowShouldBeOpen;

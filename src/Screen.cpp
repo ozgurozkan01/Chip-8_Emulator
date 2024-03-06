@@ -12,7 +12,8 @@ Screen::Screen(int _screenWidth, int _screenHeight) :
         windowShouldBeOpen(SDL_TRUE),
         hz(17), // for 60 fps -> 1000 / 60 = 16.66666
         foregroundColor(0xFFFFFFFF), // WHITE (RGBA)
-        backgroundColor(0xFFFF00FF) // YELLOW
+        backgroundColor(0xFFFF00FF), // YELLOW
+        scaleFactor(20)
 {}
 
 Screen::~Screen()
@@ -34,8 +35,8 @@ bool Screen::init()
     window = SDL_CreateWindow(projectName,
                               SDL_WINDOWPOS_UNDEFINED,
                               SDL_WINDOWPOS_UNDEFINED,
-                              screenWidth,
-                              screenHeight,
+                              screenWidth * scaleFactor,
+                              screenHeight * scaleFactor,
                               SDL_WINDOW_SHOWN);
 
     if (window == nullptr)
@@ -109,6 +110,12 @@ void Screen::render()
     SDL_Delay(hz); // to set fps
 
     SDL_RenderClear(renderer); // Clear renderer
-    SDL_SetRenderDrawColor(renderer, 0, 255, 255 ,255);
+
+    uint8_t red = (backgroundColor >> 24) & 0xFF;
+    uint8_t green = (backgroundColor >> 16) & 0xFF;
+    uint8_t blue = (backgroundColor >> 8) & 0xFF;
+    uint8_t alpha = (backgroundColor >> 0) & 0xFF;
+
+    SDL_SetRenderDrawColor(renderer, red, green, blue ,alpha);
     SDL_RenderPresent(renderer);
 }

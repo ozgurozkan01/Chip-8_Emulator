@@ -41,3 +41,11 @@
 699	878	7313825755733485	Chip_8_Emulator.exe	650a8490137e4a46
 4	593	7313826214449704	CMakeFiles/Chip_8_Emulator.dir/src/Screen.cpp.obj	31ae7b41bb6ddbdb
 593	681	7313826215297955	Chip_8_Emulator.exe	650a8490137e4a46
+14	308	7314084274258868	CMakeFiles/Chip_8_Emulator.dir/src/Chip8.cpp.obj	38e0d0be16c2c2de
+95	1074	7314084281940913	CMakeFiles/Chip_8_Emulator.dir/src/Screen.cpp.obj	31ae7b41bb6ddbdb
+1074	1326	7314084284373867	Chip_8_Emulator.exe	650a8490137e4a46
+5	1026	7314084722656858	CMakeFiles/Chip_8_Emulator.dir/src/Screen.cpp.obj	31ae7b41bb6ddbdb
+1027	1166	7314084723988777	Chip_8_Emulator.exe	650a8490137e4a46
+5	962	7314085434269543	CMakeFiles/Chip_8_Emulator.dir/src/main.cpp.obj	79e5d91bd05fe652
+11	990	7314085434551129	CMakeFiles/Chip_8_Emulator.dir/src/Screen.cpp.obj	31ae7b41bb6ddbdb
+991	1124	7314085435820762	Chip_8_Emulator.exe	650a8490137e4a46
