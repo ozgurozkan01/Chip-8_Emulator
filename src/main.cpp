@@ -3,7 +3,7 @@
 
 int main(int argc, char *argv[])
 {
-    Screen screen(64, 32);
+    Screen screen;
 
     if (screen.init())
     {

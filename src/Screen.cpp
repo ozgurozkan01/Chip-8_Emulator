@@ -5,16 +5,15 @@
 #include "Screen.h"
 #include <cstdio>
 
-Screen::Screen(int _screenWidth, int _screenHeight) :
-        screenHeight(_screenHeight),
-        screenWidth(_screenWidth),
+Screen::Screen() :
         projectName("Chip-8 Emulator"),
         windowShouldBeOpen(SDL_TRUE),
         hz(17), // for 60 fps -> 1000 / 60 = 16.66666
         foregroundColor(0xFFFFFFFF), // WHITE (RGBA)
         backgroundColor(0xFFFF00FF), // YELLOW
         scaleFactor(20)
-{}
+{
+}
 
 Screen::~Screen()
 {

@@ -9,11 +9,11 @@
 
 class Screen {
 public:
-    int screenWidth;
-    int screenHeight;
+    const int screenWidth = 64;
+    const int screenHeight = 32;
     const char* projectName;
 
-    Screen(int _screenWidth, int _screenHeight);
+    Screen();
     ~Screen();
 
     void update();
@@ -26,9 +26,9 @@ private:
     int hz;
     SDL_bool windowShouldBeOpen;
 
-    SDL_Window* window;
-    SDL_Renderer* renderer;
-    SDL_Texture* texture;
+    SDL_Window* window{};
+    SDL_Renderer* renderer{};
+    SDL_Texture* texture{};
 
     void processEvent();
     void render();
