@@ -67,6 +67,12 @@ build CMakeFiles/Chip_8_Emulator.dir/src/Screen.cpp.obj: CXX_COMPILER__Chip_8_Em
   OBJECT_DIR = CMakeFiles\Chip_8_Emulator.dir
   OBJECT_FILE_DIR = CMakeFiles\Chip_8_Emulator.dir\src
 
+build CMakeFiles/Chip_8_Emulator.dir/src/RAM.cpp.obj: CXX_COMPILER__Chip_8_Emulator_unscanned_Debug C$:/Users/ozgur/GitHub/Chip-8_Emulator/src/RAM.cpp || cmake_object_order_depends_target_Chip_8_Emulator
+  DEP_FILE = CMakeFiles\Chip_8_Emulator.dir\src\RAM.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Chip_8_Emulator.dir
+  OBJECT_FILE_DIR = CMakeFiles\Chip_8_Emulator.dir\src
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Chip_8_Emulator
@@ -75,7 +81,7 @@ build CMakeFiles/Chip_8_Emulator.dir/src/Screen.cpp.obj: CXX_COMPILER__Chip_8_Em
 #############################################
 # Link the executable Chip_8_Emulator.exe
 
-build Chip_8_Emulator.exe: CXX_EXECUTABLE_LINKER__Chip_8_Emulator_Debug CMakeFiles/Chip_8_Emulator.dir/src/main.cpp.obj CMakeFiles/Chip_8_Emulator.dir/src/Chip8.cpp.obj CMakeFiles/Chip_8_Emulator.dir/src/Screen.cpp.obj
+build Chip_8_Emulator.exe: CXX_EXECUTABLE_LINKER__Chip_8_Emulator_Debug CMakeFiles/Chip_8_Emulator.dir/src/main.cpp.obj CMakeFiles/Chip_8_Emulator.dir/src/Chip8.cpp.obj CMakeFiles/Chip_8_Emulator.dir/src/Screen.cpp.obj CMakeFiles/Chip_8_Emulator.dir/src/RAM.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lmingw32  -lSDL2main  -lSDL2  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Chip_8_Emulator.dir
