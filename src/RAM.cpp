@@ -7,9 +7,7 @@
 
 RAM::RAM() :
     // First 0x1FF memory locations are for CHIP8 itself
-    ramBeginningPoint(0x200),
-    PC(ramBeginningPoint),
-    I(0)
+    ramBeginningPoint(0x200)
 {
     maxRamSize = sizeof memory - ramBeginningPoint;
     init();

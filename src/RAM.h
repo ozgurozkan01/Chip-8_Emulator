@@ -28,8 +28,6 @@ private:
 
     const uint16_t ramBeginningPoint;
     uint16_t maxRamSize;
-    uint16_t PC; //  Program Counter which points at the current instruction in memory
-    uint16_t I; // Index Pointer which is used to point at locations in memory
 };
 
 
