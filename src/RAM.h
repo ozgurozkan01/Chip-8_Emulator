@@ -15,7 +15,6 @@ public:
 private:
     void init();
     void loadFonts();
-    void loadROM();
 
     uint8_t memory[4096] = {0};
     uint16_t stack[16];

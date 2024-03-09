@@ -60,8 +60,3 @@ void RAM::loadFonts()
     // Load into memory whole this fonts
     memcpy(&memory[0], fontSet, sizeof(fontSet));
 }
-
-void RAM::loadROM()
-{
-
-}
