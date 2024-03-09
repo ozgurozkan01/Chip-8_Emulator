@@ -3,7 +3,7 @@
 
 int main(int argc, char *argv[])
 {
-    Chip8 chip8_Emulator("");
+    Chip8 chip8_Emulator;
 
     if (chip8_Emulator.init())
     {
