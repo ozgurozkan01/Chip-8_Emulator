@@ -6,8 +6,7 @@
 #include "RAM.h"
 #include "Screen.h"
 
-Chip8::Chip8(const char *romName) :
-    romName(romName),
+Chip8::Chip8() :
     memory(new RAM()),
     screen(new Screen())
 {}

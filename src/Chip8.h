@@ -18,14 +18,13 @@ public:
     RAM* memory;
     Screen* screen;
 
-    Chip8(const char *romName);
+    Chip8();
     ~Chip8();
 
     bool init();
     void update() const;
 
 private:
-    const char* romName; // Name of currently running rom
 
     uint16_t opcode; // operation code
     bool displayRefresh[64*32]; // (0xF00-0xFFF)
