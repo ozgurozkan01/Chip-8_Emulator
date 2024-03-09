@@ -11,6 +11,7 @@
 class RAM;
 class Screen;
 class ROM;
+class CPU;
 
 enum EEmulatorState
 {
@@ -21,12 +22,6 @@ enum EEmulatorState
 
 class Chip8 {
 public:
-
-    // Components
-    RAM* memory;
-    Screen* screen;
-    ROM* rom;
-
     Chip8();
     ~Chip8();
 
@@ -34,9 +29,14 @@ public:
     void update();
 
 private:
+    // Components
+    RAM* memory;
+    Screen* screen;
+    ROM* rom;
+    CPU* cpu;
+
     EEmulatorState currentState;
 
-    uint16_t opcode; // operation code
     bool displayRefresh[64*32]; // (0xF00-0xFFF)
     uint8_t pixels[64*32]; // pixel amount
 

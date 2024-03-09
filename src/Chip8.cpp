@@ -6,12 +6,14 @@
 #include "RAM.h"
 #include "Screen.h"
 #include "ROM.h"
+#include "CPU.h"
 
 Chip8::Chip8() :
     currentState(EEmulatorState::RUNNING),
     memory(new RAM()),
     screen(new Screen()),
-    rom(new ROM("C:/Users/ozgur/GitHub/Chip-8_Emulator/ROMs/Chip8 Picture.ch8"))
+    rom(new ROM("C:/Users/ozgur/GitHub/Chip-8_Emulator/ROMs/Chip8 Picture.ch8")),
+    cpu(new CPU)
 {}
 
 bool Chip8::init()
@@ -47,6 +49,7 @@ void Chip8::update()
     while (currentState != EEmulatorState::QUIT)
     {
         screen->render();
+        cpu->emulateInstructions(memory->getMemory());
         processEvent();
     }
 }
