@@ -12,6 +12,9 @@ public:
     RAM();
     ~RAM();
 
+    uint16_t getMaxRamSize();
+    uint8_t* getMemory();
+    [[nodiscard]] uint16_t getBeginningPoint() const;
 private:
     void init();
     void loadFonts();
@@ -23,6 +26,8 @@ private:
     const uint32_t fontSize = 80;
     uint16_t *fontSet;
 
+    const uint16_t ramBeginningPoint;
+    uint16_t maxRamSize;
     uint16_t PC; //  Program Counter which points at the current instruction in memory
     uint16_t I; // Index Pointer which is used to point at locations in memory
 };
