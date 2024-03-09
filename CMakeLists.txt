@@ -13,6 +13,8 @@ add_executable(Chip_8_Emulator
         src/RAM.h
         src/ROM.cpp
         src/ROM.h
+        src/CPU.cpp
+        src/CPU.h
 )
 
 target_link_libraries(
