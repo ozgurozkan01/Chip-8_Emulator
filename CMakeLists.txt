@@ -11,6 +11,8 @@ add_executable(Chip_8_Emulator
         src/Screen.h
         src/RAM.cpp
         src/RAM.h
+        src/ROM.cpp
+        src/ROM.h
 )
 
 target_link_libraries(

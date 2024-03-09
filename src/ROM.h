@@ -7,7 +7,12 @@
 
 
 class ROM {
+public:
+    ROM(const char *romName);
+    ~ROM();
+private:
 
+    const char* romName; // Name of currently running rom
 };
 
 

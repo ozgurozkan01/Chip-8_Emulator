@@ -3,3 +3,8 @@
 //
 
 #include "ROM.h"
+
+ROM::ROM(const char *romName) :
+        romName(romName) {}
+
+ROM::~ROM() {}
