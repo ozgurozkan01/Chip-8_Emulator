@@ -16,8 +16,7 @@ Chip8::Chip8() :
 
 bool Chip8::init()
 {
-    if (!rom->readRom(memory->getMemory(), memory->getBeginningPoint(), memory->getMaxRamSize()) ||
-        !screen->init())
+    if (!rom->readRom(memory->getMemory(), memory->getBeginningPoint(), memory->getMaxRamSize()) || !screen->init())
     {
         return false;
     }
