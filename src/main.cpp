@@ -1,13 +1,13 @@
 #include "SDL2/SDL.h"
-#include "Screen.h"
+#include "Chip8.h"
 
 int main(int argc, char *argv[])
 {
-    Screen screen;
+    Chip8 chip8_Emulator("");
 
-    if (screen.init())
+    if (chip8_Emulator.init())
     {
-        screen.update();
+        chip8_Emulator.update();
     }
 
     return 0;
