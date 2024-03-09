@@ -15,9 +15,8 @@ public:
 
     Screen();
     ~Screen();
-
-    void update();
     bool init();
+    void render();
 private:
     uint32_t foregroundColor;
     uint32_t backgroundColor;
@@ -30,8 +29,6 @@ private:
     SDL_Renderer* renderer{};
     SDL_Texture* texture{};
 
-    void processEvent();
-    void render();
 };
 
 

@@ -10,7 +10,7 @@ Screen::Screen() :
         windowShouldBeOpen(SDL_TRUE),
         hz(17), // for 60 fps -> 1000 / 60 = 16.66666
         foregroundColor(0xFFFFFFFF), // WHITE (RGBA)
-        backgroundColor(0xFFFF00FF), // YELLOW
+        backgroundColor(0xFF0000FF), // YELLOW
         scaleFactor(20)
 {
 }
@@ -71,37 +71,6 @@ bool Screen::init()
     }
 
     return true;
-}
-
-void Screen::update()
-{
-    while (windowShouldBeOpen)
-    {
-        processEvent();
-        render();
-    }
-}
-
-void Screen::processEvent()
-{
-    SDL_Event event;
-    while (SDL_PollEvent(&event))
-    {
-        if (event.type == SDL_QUIT)
-        {
-            windowShouldBeOpen = SDL_FALSE;
-        }
-
-        if (event.type == SDL_KEYDOWN)
-        {
-            switch (event.key.keysym.sym)
-            {
-                case SDLK_ESCAPE:
-                    windowShouldBeOpen = SDL_FALSE;
-                    break;
-            }
-        }
-    }
 }
 
 void Screen::render()
