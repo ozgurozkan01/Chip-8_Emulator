@@ -12,6 +12,13 @@ class RAM;
 class Screen;
 class ROM;
 
+enum EEmulatorState
+{
+    RUNNING,
+    QUIT,
+    PAUSED
+};
+
 class Chip8 {
 public:
 
@@ -24,9 +31,10 @@ public:
     ~Chip8();
 
     bool init();
-    void update() const;
+    void update();
 
 private:
+    EEmulatorState currentState;
 
     uint16_t opcode; // operation code
     bool displayRefresh[64*32]; // (0xF00-0xFFF)
@@ -38,6 +46,7 @@ private:
     SDL_KeyCode* keymap; // Keys -> 0 - F
 
     void assignKeyMap();
+    void processEvent();
 };
 
 
