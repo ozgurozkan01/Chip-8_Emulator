@@ -3,16 +3,40 @@
 //
 
 #include "RAM.h"
+#include <cstring>
 
 RAM::RAM() :
     // First 0x1FF memory locations are for CHIP8 itself
-    pc(0x200),
+    PC(0x200),
     I(0)
 {
+    init();
+}
+
+void RAM::init()
+{
+    loadFonts();
+}
+
+RAM::~RAM()
+{
+    delete [] fontSet;
 }
 
 void RAM::loadFonts()
 {
+    /*
+     * For 7 number, how to look like this hex code
+     * 1111 0000
+     * 0001 0000
+     * 0010 0000
+     * 0100 0000
+     * 0100 0000
+     *
+     * Whole 1's are drawing 7 number
+     * */
+
+    // Set fonts
     fontSet = new uint16_t[fontSize]
             {
                     0xF0, 0x90, 0x90, 0x90, 0xF0, // 0
@@ -32,4 +56,12 @@ void RAM::loadFonts()
                     0xF0, 0x80, 0xF0, 0x80, 0xF0, // E
                     0xF0, 0x80, 0xF0, 0x80, 0x80  // F
             };
+
+    // Load into memory whole this fonts
+    memcpy(&memory[0], fontSet, sizeof(fontSet));
+}
+
+void RAM::loadROM()
+{
+
 }

@@ -10,18 +10,22 @@
 class RAM {
 public:
     RAM();
-private:
-    void loadFonts();
+    ~RAM();
 
-    uint8_t memory[4096];
+private:
+    void init();
+    void loadFonts();
+    void loadROM();
+
+    uint8_t memory[4096] = {0};
     uint16_t stack[16];
     uint8_t register_V[16];
 
     const uint32_t fontSize = 80;
     uint16_t *fontSet;
 
-    uint16_t pc; //  which points at the current instruction in memory
-    uint16_t I; // which is used to point at locations in memory
+    uint16_t PC; //  Program Counter which points at the current instruction in memory
+    uint16_t I; // Index Pointer which is used to point at locations in memory
 };
 
 
