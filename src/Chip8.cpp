@@ -8,14 +8,19 @@
 #include "ROM.h"
 
 Chip8::Chip8() :
+    currentState(EEmulatorState::RUNNING),
     memory(new RAM()),
     screen(new Screen()),
-    rom(new ROM(""))
+    rom(new ROM("C:/Users/ozgur/GitHub/Chip-8_Emulator/ROMs/Chip8 Picture.ch8"))
 {}
 
 bool Chip8::init()
 {
-    if (!rom->init() || !screen->init()) return false;
+    if (!rom->readRom(memory->getMemory(), memory->getBeginningPoint(), memory->getMaxRamSize()) ||
+        !screen->init())
+    {
+        return false;
+    }
 
     assignKeyMap();
     return true;
@@ -23,30 +28,11 @@ bool Chip8::init()
 
 void Chip8::assignKeyMap()
 {
-    /*  KEY MAP ON KEYBOARD
-     *  1 2 3 4
-     *  Q W E R
-     *  A S D F
-     *  Z X C V
-     */
-
     keymap = new SDL_KeyCode[16]{
-            SDLK_q,
-            SDLK_w,
-            SDLK_e,
-            SDLK_r,
-            SDLK_a,
-            SDLK_s,
-            SDLK_d,
-            SDLK_f,
-            SDLK_z,
-            SDLK_x,
-            SDLK_c,
-            SDLK_v,
-            SDLK_1,
-            SDLK_2,
-            SDLK_3,
-            SDLK_4,
+            SDLK_1, SDLK_2, SDLK_3, SDLK_4,
+            SDLK_q, SDLK_w, SDLK_e, SDLK_r,
+            SDLK_a, SDLK_s, SDLK_d, SDLK_f,
+            SDLK_z, SDLK_x, SDLK_c, SDLK_v
     };
 }
 
@@ -57,8 +43,38 @@ Chip8::~Chip8()
     delete screen;
 }
 
-void Chip8::update() const
+void Chip8::update()
 {
-    screen->update();
+    while (currentState != EEmulatorState::QUIT)
+    {
+        screen->render();
+        processEvent();
+    }
 }
 
+void Chip8::processEvent()
+{
+    SDL_Event event;
+    while (SDL_PollEvent(&event))
+    {
+        if (event.type == SDL_QUIT)
+        {
+            currentState = EEmulatorState::QUIT;
+            return;
+        }
+
+        if (event.type == SDL_KEYDOWN)
+        {
+            switch (event.key.keysym.sym)
+            {
+                case SDLK_ESCAPE:
+                    currentState = EEmulatorState::QUIT;
+                    return;
+                case SDLK_SPACE:
+                    currentState = EEmulatorState::PAUSED;
+                    return;
+            }
+        }
+    }
+
+}
