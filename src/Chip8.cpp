@@ -5,15 +5,17 @@
 #include "Chip8.h"
 #include "RAM.h"
 #include "Screen.h"
+#include "ROM.h"
 
 Chip8::Chip8() :
     memory(new RAM()),
-    screen(new Screen())
+    screen(new Screen()),
+    rom(new ROM(""))
 {}
 
 bool Chip8::init()
 {
-    if (!screen->init()) return false;
+    if (!rom->init() || !screen->init()) return false;
 
     assignKeyMap();
     return true;

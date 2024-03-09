@@ -10,6 +10,7 @@
 
 class RAM;
 class Screen;
+class ROM;
 
 class Chip8 {
 public:
@@ -17,6 +18,7 @@ public:
     // Components
     RAM* memory;
     Screen* screen;
+    ROM* rom;
 
     Chip8();
     ~Chip8();
