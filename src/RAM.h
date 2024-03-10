@@ -14,14 +14,16 @@ public:
 
     uint16_t getMaxRamSize();
     uint8_t* getMemory();
+    uint16_t* getStack();
+    uint8_t* getRegisters_V();
     [[nodiscard]] uint16_t getBeginningPoint() const;
 private:
     void init();
     void loadFonts();
 
     uint8_t memory[4096] = {0};
-    uint16_t stack[16];
-    uint8_t register_V[16];
+    uint16_t stack[16]{0};
+    uint8_t register_V[16]{0};
 
     const uint32_t fontSize = 80;
     uint16_t *fontSet;
