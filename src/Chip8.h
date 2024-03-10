@@ -30,7 +30,7 @@ public:
 
 private:
     // Components
-    RAM* memory;
+    RAM* ram;
     Screen* screen;
     ROM* rom;
     CPU* cpu;

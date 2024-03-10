@@ -9,16 +9,16 @@
 #include "CPU.h"
 
 Chip8::Chip8() :
-    currentState(EEmulatorState::RUNNING),
-    memory(new RAM()),
-    screen(new Screen()),
-    rom(new ROM("C:/Users/ozgur/GitHub/Chip-8_Emulator/ROMs/Chip8 Picture.ch8")),
-    cpu(new CPU)
+        currentState(EEmulatorState::RUNNING),
+        ram(new RAM()),
+        screen(new Screen()),
+        rom(new ROM("C:/Users/ozgur/GitHub/Chip-8_Emulator/ROMs/Chip8 Picture.ch8")),
+        cpu(new CPU)
 {}
 
 bool Chip8::init()
 {
-    if (!rom->readRom(memory->getMemory(), memory->getBeginningPoint(), memory->getMaxRamSize()) || !screen->init())
+    if (!rom->readRom(ram->getMemory(), ram->getBeginningPoint(), ram->getMaxRamSize()) || !screen->init())
     {
         return false;
     }
@@ -40,7 +40,7 @@ void Chip8::assignKeyMap()
 Chip8::~Chip8()
 {
     delete [] keymap;
-    delete memory;
+    delete ram;
     delete screen;
 }
 
@@ -49,7 +49,7 @@ void Chip8::update()
     while (currentState != EEmulatorState::QUIT)
     {
         screen->render();
-        cpu->emulateInstructions(memory->getMemory());
+        cpu->emulateInstructions(ram);
         processEvent();
     }
 }
