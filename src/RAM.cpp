@@ -6,7 +6,7 @@
 #include <cstring>
 
 RAM::RAM() :
-    // First 0x1FF memory locations are for CHIP8 itself
+    // First 0x1FF ram locations are for CHIP8 itself
     ramBeginningPoint(0x200)
 {
     maxRamSize = sizeof memory - ramBeginningPoint;
@@ -57,7 +57,7 @@ void RAM::loadFonts()
                     0xF0, 0x80, 0xF0, 0x80, 0x80  // F
             };
 
-    // Load into memory whole this fonts
+    // Load into ram whole this fonts
     memcpy(&memory[0], fontSet, sizeof(fontSet));
 }
 
@@ -66,4 +66,12 @@ uint16_t RAM::getMaxRamSize() {return maxRamSize; }
 uint8_t *RAM::getMemory() { return memory; }
 
 uint16_t RAM::getBeginningPoint() const { return ramBeginningPoint; }
+
+uint16_t *RAM::getStack() {
+    return stack;
+}
+
+uint8_t *RAM::getRegisters_V() {
+    return register_V;
+}
 
