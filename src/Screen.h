@@ -9,26 +9,31 @@
 
 class Screen {
 public:
-    const int screenWidth = 64;
-    const int screenHeight = 32;
-    const char* projectName;
 
     Screen();
     ~Screen();
     bool init();
+    void clearScreen();
     void render();
+    void setSpriteActivation(class RAM* ram, struct Instructions& instruction, uint16_t I);
+    void drawSprite();
+
 private:
     uint32_t foregroundColor;
     uint32_t backgroundColor;
-    int scaleFactor;
 
+    const int screenWidth = 64;
+    const int screenHeight = 32;
+    const char* projectName;
+    const int gapSize = 2;
+    int scaleFactor;
     int hz;
-    SDL_bool windowShouldBeOpen;
+
+    bool display[64 * 32]; // (0xF00-0xFFF)
 
     SDL_Window* window{};
     SDL_Renderer* renderer{};
     SDL_Texture* texture{};
-
 };
 
 
