@@ -6,6 +6,7 @@
 #define CHIP_8_EMULATOR_RAM_H
 
 #include <cstdint>
+#include <stack>
 
 class RAM {
 public:
@@ -14,22 +15,22 @@ public:
 
     uint16_t getMaxRamSize();
     uint8_t* getMemory();
-    uint16_t* getStack();
+    std::stack<uint16_t>& getStack();
     uint8_t* getRegisters_V();
     [[nodiscard]] uint16_t getBeginningPoint() const;
+
 private:
-    void init();
-    void loadFonts();
-
     uint8_t memory[4096] = {0};
-    uint16_t stack[16]{0};
     uint8_t register_V[16]{0};
-
-    const uint32_t fontSize = 80;
+    std::stack<uint16_t> stack;
     uint16_t *fontSet;
 
-    const uint16_t ramBeginningPoint;
+    const uint32_t fontSize = 80;
+    uint16_t ramBeginningPoint;
     uint16_t maxRamSize;
+
+    void init();
+    void loadFonts();
 };
 
 

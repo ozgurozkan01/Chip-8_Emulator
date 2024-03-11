@@ -62,16 +62,7 @@ void RAM::loadFonts()
 }
 
 uint16_t RAM::getMaxRamSize() {return maxRamSize; }
-
 uint8_t *RAM::getMemory() { return memory; }
-
 uint16_t RAM::getBeginningPoint() const { return ramBeginningPoint; }
-
-uint16_t *RAM::getStack() {
-    return stack;
-}
-
-uint8_t *RAM::getRegisters_V() {
-    return register_V;
-}
-
+std::stack<uint16_t>& RAM::getStack() { return stack; }
+uint8_t *RAM::getRegisters_V() { return register_V; }
