@@ -24,7 +24,7 @@ class CPU {
 public:
     CPU();
 
-    void emulateInstructions(class RAM* ram);
+    void emulateInstructions(class RAM* ram, class Screen* screen);
 private:
     Instructions instruction;
     uint16_t opcode;
