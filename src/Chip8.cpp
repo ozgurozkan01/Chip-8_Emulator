@@ -10,15 +10,16 @@
 
 Chip8::Chip8() :
         currentState(EEmulatorState::RUNNING),
+        rom(new ROM("C:/Users/ozgur/GitHub/Chip-8_Emulator/ROMs/IBM Logo.ch8")),
+        cpu(new CPU),
         ram(new RAM()),
-        screen(new Screen()),
-        rom(new ROM("C:/Users/ozgur/GitHub/Chip-8_Emulator/ROMs/Chip8 Picture.ch8")),
-        cpu(new CPU)
+        screen(new Screen())
 {}
 
 bool Chip8::init()
 {
-    if (!rom->readRom(ram->getMemory(), ram->getBeginningPoint(), ram->getMaxRamSize()) || !screen->init())
+    if (!rom->readRom(ram->getMemory(), ram->getBeginningPoint(), ram->getMaxRamSize()) ||
+        !screen->init())
     {
         return false;
     }
@@ -48,8 +49,8 @@ void Chip8::update()
 {
     while (currentState != EEmulatorState::QUIT)
     {
+        cpu->emulateInstructions(ram, screen);
         screen->render();
-        cpu->emulateInstructions(ram);
         processEvent();
     }
 }
