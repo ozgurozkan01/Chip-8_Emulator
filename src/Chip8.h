@@ -37,13 +37,7 @@ private:
 
     EEmulatorState currentState;
 
-    bool displayRefresh[64*32]; // (0xF00-0xFFF)
-    uint8_t pixels[64*32]; // pixel amount
-
-    uint8_t delayTimer;
-    uint8_t soundTimer;
-
-    SDL_KeyCode* keymap; // Keys -> 0 - F
+    SDL_KeyCode* keymap;
 
     void assignKeyMap();
     void processEvent();
