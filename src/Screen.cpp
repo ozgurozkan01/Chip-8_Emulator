@@ -137,8 +137,8 @@ void Screen::drawSprite()
     {
         for (int x = 0; x < screenWidth; ++x)
         {
-            rectangle.x = (x * scaleFactor) + gapSize;
-            rectangle.y = (y * scaleFactor) + gapSize;
+            rectangle.x = (x * scaleFactor) + (gapSize / 2);
+            rectangle.y = (y * scaleFactor) + (gapSize / 2);
             // pixel is on, render
             if (display[y * screenWidth + x])
             {
