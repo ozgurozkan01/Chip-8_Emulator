@@ -30,10 +30,12 @@ void CPU::emulateInstructions(RAM* ram, Screen* screen) {
     switch (instruction.firstNibble)
     {
         case 0x0:
-            if (instruction.NNN == 0x0E0) {
+            if (instruction.NNN == 0x0E0)
+            {
                 screen->clearScreen();
             }
-            else if (instruction.NNN == 0x0EE) {
+            else if (instruction.NNN == 0x0EE)
+            {
                 PC = ram->getStack().top();
                 ram->getStack().pop();
             }
@@ -46,13 +48,14 @@ void CPU::emulateInstructions(RAM* ram, Screen* screen) {
             PC = instruction.NNN;
             break;
         case 0x3:
-            if (ram->getRegisters_V()[instruction.X] == instruction.NN){ PC += 2; }
+            if (ram->getRegisters_V()[instruction.X] == instruction.NN) { PC += 2; }
             break;
         case 0x4:
-            if (ram->getRegisters_V()[instruction.X] != instruction.NN){ PC += 2; }
+            if (ram->getRegisters_V()[instruction.X] != instruction.NN) { PC += 2; }
             break;
         case 0x5:
-            if (instruction.N == 0x0 && ram->getRegisters_V()[instruction.X] == ram->getRegisters_V()[instruction.Y]){ PC += 2; }
+            if (instruction.N == 0x0 &&
+                ram->getRegisters_V()[instruction.X] == ram->getRegisters_V()[instruction.Y]) { PC += 2; }
             break;
         case 0x6:
             ram->getRegisters_V()[instruction.X] = instruction.NN;
@@ -77,28 +80,33 @@ void CPU::emulateInstructions(RAM* ram, Screen* screen) {
                     break;
                 case 0x4:
                     ram->getRegisters_V()[instruction.X] += ram->getRegisters_V()[instruction.Y];
-                    ram->getRegisters_V()[instruction.X] >= 0xFF ? ram->getRegisters_V()[0x0F] = 1 : ram->getRegisters_V()[0x0F] = 0;
+                    ram->getRegisters_V()[instruction.X] >= 0xFF ? ram->getRegisters_V()[0x0F] = 1
+                                                                 : ram->getRegisters_V()[0x0F] = 0;
                     break;
                 case 0x5:
                     ram->getRegisters_V()[instruction.X] -= ram->getRegisters_V()[instruction.Y];
-                    ram->getRegisters_V()[instruction.X] >= ram->getRegisters_V()[instruction.Y] ? ram->getRegisters_V()[0x0F] = 1 : ram->getRegisters_V()[0x0F] = 0;
+                    ram->getRegisters_V()[instruction.X] >= ram->getRegisters_V()[instruction.Y]
+                    ? ram->getRegisters_V()[0x0F] = 1 : ram->getRegisters_V()[0x0F] = 0;
                     break;
                 case 0x6:
-                    (ram->getRegisters_V()[instruction.X] & 0x00000001) == 0 ? ram->getRegisters_V()[0x0F] = 0 : ram->getRegisters_V()[0x0F] = 1;
+                    ram->getRegisters_V()[0x0F] = (ram->getRegisters_V()[instruction.X] & 0b00000001);
                     ram->getRegisters_V()[instruction.X] >>= 1;
                     break;
                 case 0x7:
-                    ram->getRegisters_V()[instruction.X] = ram->getRegisters_V()[instruction.Y] - ram->getRegisters_V()[instruction.X];
-                    ram->getRegisters_V()[instruction.Y] >= ram->getRegisters_V()[instruction.X] ? ram->getRegisters_V()[0x0F] = 1 : ram->getRegisters_V()[0x0F] = 0;
+                    ram->getRegisters_V()[instruction.X] =
+                            ram->getRegisters_V()[instruction.Y] - ram->getRegisters_V()[instruction.X];
+                    ram->getRegisters_V()[instruction.Y] >= ram->getRegisters_V()[instruction.X]
+                    ? ram->getRegisters_V()[0x0F] = 1 : ram->getRegisters_V()[0x0F] = 0;
                     break;
                 case 0xE:
-                    (ram->getRegisters_V()[instruction.X] & 0x10000000) == 0 ? ram->getRegisters_V()[0x0F] = 0 : ram->getRegisters_V()[0x0F] = 1;
+                    ram->getRegisters_V()[0x0F] = (ram->getRegisters_V()[instruction.X] & 0b10000000);
                     ram->getRegisters_V()[instruction.X] <<= 1;
                     break;
             }
             break;
         case 0x9:
-            if (instruction.N == 0x0 && ram->getRegisters_V()[instruction.X] != ram->getRegisters_V()[instruction.Y]){ PC += 2; }
+            if (instruction.N == 0x0 &&
+                ram->getRegisters_V()[instruction.X] != ram->getRegisters_V()[instruction.Y]) { PC += 2; }
             break;
         case 0xA:
             I = instruction.NNN;
@@ -113,19 +121,19 @@ void CPU::emulateInstructions(RAM* ram, Screen* screen) {
             screen->setSpriteActivation(ram, instruction, I);
             break;
         case 0xE:
-            if (instruction.NN == 0x9E){}
-            else if (instruction.NN == 0xA1){}
+            if (instruction.NN == 0x9E) {}
+            else if (instruction.NN == 0xA1) {}
             break;
         case 0x0F:
-            if (instruction.NN == 0x07){}
-            else if (instruction.NN == 0x0A){}
-            else if (instruction.NN == 0x15){}
-            else if (instruction.NN == 0x18){}
-            else if (instruction.NN == 0x1E){ I = ram->getRegisters_V()[instruction.X]; }
-            else if (instruction.NN == 0x29){}
-            else if (instruction.NN == 0x33){}
-            else if (instruction.NN == 0x55){}
-            else if (instruction.NN == 0x65){}
+            if (instruction.NN == 0x07) {}
+            else if (instruction.NN == 0x0A) {}
+            else if (instruction.NN == 0x15) {}
+            else if (instruction.NN == 0x18) {}
+            else if (instruction.NN == 0x1E) { I = ram->getRegisters_V()[instruction.X]; }
+            else if (instruction.NN == 0x29) {}
+            else if (instruction.NN == 0x33) {}
+            else if (instruction.NN == 0x55) {}
+            else if (instruction.NN == 0x65) {}
             break;
         default:
             break; // invalid instruction
