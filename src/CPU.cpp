@@ -16,11 +16,10 @@ CPU::CPU() :
     srand(time(nullptr));
 }
 
-void CPU::emulateInstructions(RAM* ram, Screen* screen)
-{
-    opcode = (ram->getMemory()[PC]) << 8 | (ram->getMemory()[PC+1]); // get next opcode = convert big endian
+void CPU::emulateInstructions(RAM* ram, Screen* screen) {
+    opcode = (ram->getMemory()[PC]) << 8 | (ram->getMemory()[PC + 1]); // get next opcode = convert big endian
     PC += 2; // increase program counter for next instruction
-    
+
     instruction.firstNibble = (opcode >> 12) & 0x0F;
     instruction.NNN = (opcode & 0x0FFF);
     instruction.NN = (opcode & 0x00FF);
