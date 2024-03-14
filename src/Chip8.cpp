@@ -30,17 +30,11 @@ bool Chip8::init()
 
 void Chip8::assignKeyMap()
 {
-    keymap = new SDL_KeyCode[16]{
-            SDLK_1, SDLK_2, SDLK_3, SDLK_4,
-            SDLK_q, SDLK_w, SDLK_e, SDLK_r,
-            SDLK_a, SDLK_s, SDLK_d, SDLK_f,
-            SDLK_z, SDLK_x, SDLK_c, SDLK_v
-    };
+    keymap = new bool[16]{false};
 }
 
 Chip8::~Chip8()
 {
-    delete [] keymap;
     delete ram;
     delete screen;
 }

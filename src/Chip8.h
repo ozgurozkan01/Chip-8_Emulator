@@ -37,7 +37,7 @@ private:
 
     EEmulatorState currentState;
 
-    SDL_KeyCode* keymap;
+    bool* keymap;
 
     void assignKeyMap();
     void processEvent();
