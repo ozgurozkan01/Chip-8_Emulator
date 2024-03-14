@@ -70,6 +70,107 @@ void Chip8::processEvent()
                 case SDLK_SPACE:
                     currentState = EEmulatorState::PAUSED;
                     return;
+                case SDLK_1:
+                    keymap[0] = true;
+                case SDLK_2:
+                    keymap[1] = true;
+                    break;
+                case SDLK_3:
+                    keymap[2] = true;
+                    break;
+                case SDLK_4:
+                    keymap[3] = true;
+                    break;
+                case SDLK_q:
+                    keymap[4] = true;
+                    break;
+                case SDLK_w:
+                    keymap[5] = true;
+                    break;
+                case SDLK_e:
+                    keymap[6] = true;
+                    break;
+                case SDLK_r:
+                    keymap[7] = true;
+                    break;
+                case SDLK_a:
+                    keymap[8] = true;
+                    break;
+                case SDLK_s:
+                    keymap[9] = true;
+                    break;
+                case SDLK_d:
+                    keymap[10] = true;
+                    break;
+                case SDLK_f:
+                    keymap[11] = true;
+                    break;
+                case SDLK_z:
+                    keymap[12] = true;
+                    break;
+                case SDLK_x:
+                    keymap[13] = true;
+                    break;
+                case SDLK_c:
+                    keymap[14] = true;
+                    break;
+                case SDLK_v:
+                    keymap[15] = true;
+                    break;
+            }
+        }
+
+        if (event.type == SDL_KEYUP)
+        {
+            switch (event.key.keysym.sym)
+            {
+                case SDLK_1:
+                    keymap[0] = false;
+                case SDLK_2:
+                    keymap[1] = false;
+                    break;
+                case SDLK_3:
+                    keymap[2] = false;
+                    break;
+                case SDLK_4:
+                    keymap[3] = false;
+                    break;
+                case SDLK_q:
+                    keymap[4] = false;
+                    break;
+                case SDLK_w:
+                    keymap[5] = false;
+                    break;
+                case SDLK_e:
+                    keymap[6] = false;
+                    break;
+                case SDLK_r:
+                    keymap[7] = false;
+                    break;
+                case SDLK_a:
+                    keymap[8] = false;
+                    break;
+                case SDLK_s:
+                    keymap[9] = false;
+                    break;
+                case SDLK_d:
+                    keymap[10] = false;
+                    break;
+                case SDLK_f:
+                    keymap[11] = false;
+                    break;
+                case SDLK_z:
+                    keymap[12] = false;
+                    break;
+                case SDLK_x:
+                    keymap[13] = false;
+                    break;
+                case SDLK_c:
+                    keymap[14] = false;
+                    break;
+                case SDLK_v:
+                    keymap[15] = false;
+                    break;
             }
         }
     }
