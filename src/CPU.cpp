@@ -16,7 +16,7 @@ CPU::CPU() :
     srand(time(nullptr));
 }
 
-void CPU::emulateInstructions(RAM* ram, Screen* screen) {
+void CPU::emulateInstructions(RAM* ram, Screen* screen, const bool* keymap, uint8_t& soundTimer, uint8_t& delayTimer) {
     opcode = (ram->getMemory()[PC]) << 8 | (ram->getMemory()[PC + 1]); // get next opcode = convert big endian
     PC += 2; // increase program counter for next instruction
 

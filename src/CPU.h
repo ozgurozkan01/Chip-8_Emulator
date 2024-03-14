@@ -24,7 +24,7 @@ class CPU {
 public:
     CPU();
 
-    void emulateInstructions(class RAM* ram, class Screen* screen);
+    void emulateInstructions(class RAM* ram, class Screen* screen,const bool* keymap, uint8_t& soundTimer, uint8_t& delayTimer);
 private:
     Instructions instruction;
     uint16_t opcode;
