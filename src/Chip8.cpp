@@ -10,10 +10,12 @@
 
 Chip8::Chip8() :
         currentState(EEmulatorState::RUNNING),
-        rom(new ROM("C:/Users/ozgur/GitHub/Chip-8_Emulator/ROMs/IBM Logo.ch8")),
+        rom(new ROM("C:/Users/ozgur/GitHub/Chip-8_Emulator/ROMs/test_opcode.ch8")),
         cpu(new CPU),
         ram(new RAM()),
-        screen(new Screen())
+        screen(new Screen()),
+        soundTimer(0),
+        delayTimer(0)
 {}
 
 bool Chip8::init()

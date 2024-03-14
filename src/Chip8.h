@@ -29,6 +29,9 @@ public:
     void update();
 
 private:
+    uint8_t soundTimer;
+    uint8_t delayTimer;
+
     // Components
     RAM* ram;
     Screen* screen;
