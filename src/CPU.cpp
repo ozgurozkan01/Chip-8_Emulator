@@ -121,19 +121,20 @@ void CPU::emulateInstructions(RAM* ram, Screen* screen) {
             screen->setSpriteActivation(ram, instruction, I);
             break;
         case 0xE:
-            if (instruction.NN == 0x9E) {}
-            else if (instruction.NN == 0xA1) {}
-            break;
-        case 0x0F:
-            if (instruction.NN == 0x07) {}
-            else if (instruction.NN == 0x0A) {}
-            else if (instruction.NN == 0x15) {}
-            else if (instruction.NN == 0x18) {}
-            else if (instruction.NN == 0x1E) { I = ram->getRegisters_V()[instruction.X]; }
-            else if (instruction.NN == 0x29) {}
-            else if (instruction.NN == 0x33) {}
-            else if (instruction.NN == 0x55) {}
-            else if (instruction.NN == 0x65) {}
+            if (instruction.NN == 0x9E)
+            {
+                if (keymap[ram->getRegisters_V()[instruction.X]])
+                {
+                    PC +=2 ;
+                }
+            }
+            else if (instruction.NN == 0xA1)
+            {
+                if (!keymap[ram->getRegisters_V()[instruction.X]])
+                {
+                    PC += 2;
+                }
+            }
             break;
         default:
             break; // invalid instruction
