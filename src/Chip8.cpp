@@ -45,7 +45,7 @@ void Chip8::update()
 {
     while (currentState != EEmulatorState::QUIT)
     {
-        cpu->emulateInstructions(ram, screen);
+        cpu->emulateInstructions(ram, screen, keymap, soundTimer, delayTimer);
         screen->render();
         processEvent();
     }
