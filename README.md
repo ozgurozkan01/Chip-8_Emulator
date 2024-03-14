@@ -1,4 +1,4 @@
-# Chip-8_Emulator (Not Finished Yet)
+# Chip-8_Emulator
 Chip-8 Emulator with C++ and SDL2 to understand software architecture deeply
 
 # Resources I Follow 
@@ -9,7 +9,7 @@ At the same time, I tried to resolve what I could not understand by doing extra 
 But basically I followed the above two sources.
 
 # Current View
-![IBM_LOGO](https://github.com/ozgurozkan01/Chip-8_Emulator/assets/90643276/37678343-089b-4972-bdbe-e332b728d8ea)
-
+![Ekran görüntüsü 2024-03-15 002924](https://github.com/ozgurozkan01/Chip-8_Emulator/assets/90643276/5167b610-ed37-46f6-9544-7767bcd27b15)
+NOTE : Whole instrunctions are done.
 # Dependencies
 * SDL2
