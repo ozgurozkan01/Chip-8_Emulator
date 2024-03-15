@@ -44,8 +44,8 @@ void CPU::emulateInstructions(RAM* ram, Screen* screen, const bool* keymap, uint
             PC = instruction.NNN;
             break;
         case 0x2:
-            ram->getStack().push(PC);
             PC = instruction.NNN;
+            ram->getStack().push(PC);
             break;
         case 0x3:
             if (ram->getRegisters_V()[instruction.X] == instruction.NN) { PC += 2; }
@@ -79,27 +79,25 @@ void CPU::emulateInstructions(RAM* ram, Screen* screen, const bool* keymap, uint
                     ram->getRegisters_V()[instruction.X] ^= ram->getRegisters_V()[instruction.Y];
                     break;
                 case 0x4:
+                    ram->getRegisters_V()[0x0F] = (uint16_t)(ram->getRegisters_V()[instruction.X] + ram->getRegisters_V()[instruction.Y]) > 255 ? 1 : 0;
                     ram->getRegisters_V()[instruction.X] += ram->getRegisters_V()[instruction.Y];
-                    ram->getRegisters_V()[instruction.X] >= 0xFF ? ram->getRegisters_V()[0x0F] = 1
-                                                                 : ram->getRegisters_V()[0x0F] = 0;
                     break;
                 case 0x5:
+                    ram->getRegisters_V()[0x0F] = ram->getRegisters_V()[instruction.X] >= ram->getRegisters_V()[instruction.Y] ? 1 : 0;
                     ram->getRegisters_V()[instruction.X] -= ram->getRegisters_V()[instruction.Y];
-                    ram->getRegisters_V()[instruction.X] >= ram->getRegisters_V()[instruction.Y]
-                    ? ram->getRegisters_V()[0x0F] = 1 : ram->getRegisters_V()[0x0F] = 0;
                     break;
                 case 0x6:
-                    ram->getRegisters_V()[0x0F] = (ram->getRegisters_V()[instruction.X] & 0b00000001);
+                    ram->getRegisters_V()[0x0F] = (ram->getRegisters_V()[instruction.X] & 1);
                     ram->getRegisters_V()[instruction.X] >>= 1;
                     break;
                 case 0x7:
+                    ram->getRegisters_V()[0x0F] = ram->getRegisters_V()[instruction.Y] >= ram->getRegisters_V()[instruction.X]
+                    ?  1 : 0;
                     ram->getRegisters_V()[instruction.X] =
                             ram->getRegisters_V()[instruction.Y] - ram->getRegisters_V()[instruction.X];
-                    ram->getRegisters_V()[instruction.Y] >= ram->getRegisters_V()[instruction.X]
-                    ? ram->getRegisters_V()[0x0F] = 1 : ram->getRegisters_V()[0x0F] = 0;
                     break;
                 case 0xE:
-                    ram->getRegisters_V()[0x0F] = (ram->getRegisters_V()[instruction.X] & 0b10000000);
+                    ram->getRegisters_V()[0x0F] = ((ram->getRegisters_V()[instruction.X]  & 0x80 ) >> 7);
                     ram->getRegisters_V()[instruction.X] <<= 1;
                     break;
             }
@@ -115,7 +113,7 @@ void CPU::emulateInstructions(RAM* ram, Screen* screen, const bool* keymap, uint
             PC = ram->getRegisters_V()[0] + instruction.NNN;
             break;
         case 0xC:
-            ram->getRegisters_V()[instruction.X] = rand() & instruction.NN;
+            ram->getRegisters_V()[instruction.X] = std::rand() & instruction.NN;
             break;
         case 0xD:
             screen->setSpriteActivation(ram, instruction, I);
@@ -143,19 +141,22 @@ void CPU::emulateInstructions(RAM* ram, Screen* screen, const bool* keymap, uint
             }
             else if (instruction.NN == 0x0A)
             {
-                int keymapSize = sizeof(keymap) / sizeof(keymap[0]);
-
-                for (int i = 0; i < keymapSize; ++i)
+                bool anyKeyPressed = false;
+                for (int i = 0; i < 16; ++i)
                 {
                     if (keymap[i])
                     {
                         ram->getRegisters_V()[instruction.X] = i;
-                        PC += 2;
-                        return;
+                        anyKeyPressed = true;
+                        break;
                     }
                 }
 
-                PC -= 2;
+                if (!anyKeyPressed)
+                {
+                    PC -= 2;
+                }
+                break;
             }
             else if (instruction.NN == 0x15)
             {
@@ -167,7 +168,7 @@ void CPU::emulateInstructions(RAM* ram, Screen* screen, const bool* keymap, uint
             }
             else if (instruction.NN == 0x1E)
             {
-                if (I > 0x0FFF)
+                if (I + ram->getRegisters_V()[instruction.X] > 0x0FFF)
                 {
                     ram->getRegisters_V()[0xF] = 1;
                 }
@@ -176,12 +177,11 @@ void CPU::emulateInstructions(RAM* ram, Screen* screen, const bool* keymap, uint
             }
             else if (instruction.NN == 0x29)
             {
-                I = ram->getRegisters_V()[(opcode & 0x0F00) >> 8] * 0x5;
-                PC += 2;
+                I = (ram->getRegisters_V()[instruction.X] * 5);
             }
             else if (instruction.NN == 0x33)
             {
-                int n = ram->getRegisters_V()[instruction.X];
+                uint8_t n = ram->getRegisters_V()[instruction.X];
 
                 for (int i = 2; i >= 0; i--)
                 {
@@ -191,14 +191,14 @@ void CPU::emulateInstructions(RAM* ram, Screen* screen, const bool* keymap, uint
             }
             else if (instruction.NN == 0x55)
             {
-                for (int i = 0; i <= instruction.X; ++i)
+                for (uint16_t i = 0; i <= instruction.X; ++i)
                 {
                      ram->getMemory()[I + i] = ram->getRegisters_V()[i];
                 }
             }
             else if (instruction.NN == 0x65)
             {
-                for (int i = 0; i <= instruction.X; ++i)
+                for (uint16_t i = 0; i <= instruction.X; ++i)
                 {
                     ram->getRegisters_V()[i] = ram->getMemory()[I + i];
                 }

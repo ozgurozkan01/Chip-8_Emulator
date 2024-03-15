@@ -10,7 +10,7 @@
 
 Chip8::Chip8() :
         currentState(EEmulatorState::RUNNING),
-        rom(new ROM("C:/Users/ozgur/GitHub/Chip-8_Emulator/ROMs/test_opcode.ch8")),
+        rom(new ROM(R"(C:\Users\ozgur\GitHub\Chip-8_Emulator\ROMs\BC_test.ch8)")),
         cpu(new CPU),
         ram(new RAM()),
         screen(new Screen()),
@@ -74,6 +74,7 @@ void Chip8::processEvent()
                     return;
                 case SDLK_1:
                     keymap[0] = true;
+                    break;
                 case SDLK_2:
                     keymap[1] = true;
                     break;
@@ -128,6 +129,7 @@ void Chip8::processEvent()
             {
                 case SDLK_1:
                     keymap[0] = false;
+                    break;
                 case SDLK_2:
                     keymap[1] = false;
                     break;

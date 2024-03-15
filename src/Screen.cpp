@@ -112,10 +112,10 @@ void Screen::setSpriteActivation(struct RAM *ram, struct Instructions& instructi
 
             display[xCoord + yCoord * screenWidth] ^= spriteBit;
             // Stop drawing, if x gets out of screen width
-            if (++xCoord >= screenWidth) return;
+            if (++xCoord >= screenWidth) break;
         }
         // Stop drawing, if y gets out of screen height
-        if (++yCoord >= screenHeight) return;
+        if (++yCoord >= screenHeight) break;
     }
 }
 
