@@ -9,7 +9,8 @@ At the same time, I tried to resolve what I could not understand by doing extra 
 But basically I followed the above two sources.
 
 # Current View
-![Ekran görüntüsü 2024-03-15 002924](https://github.com/ozgurozkan01/Chip-8_Emulator/assets/90643276/5167b610-ed37-46f6-9544-7767bcd27b15)
+![Ekran görüntüsü 2024-03-15 235440](https://github.com/ozgurozkan01/Chip-8_Emulator/assets/90643276/d3c4d89e-35c6-4586-b529-b0407d9d80de)
+
 NOTE : Whole instrunctions are done.
 # Dependencies
 * SDL2
