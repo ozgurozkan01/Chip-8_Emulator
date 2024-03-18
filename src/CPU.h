@@ -25,11 +25,13 @@ public:
     CPU();
 
     void emulateInstructions(class RAM* ram, class Screen* screen,const bool* keymap, uint8_t& soundTimer, uint8_t& delayTimer);
+    [[nodiscard]] uint32_t getClockRate() const;
 private:
     Instructions instruction;
     uint16_t opcode;
     uint16_t PC; //  Program Counter which points at the current instruction in ram
     uint16_t I; // Index Pointer which is used to point at locations in ram
+    uint32_t clockRate;
 };
 
 

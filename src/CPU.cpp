@@ -11,7 +11,8 @@ CPU::CPU() :
         PC(0x200),
         I(0),
         opcode(0),
-        instruction({0,1,2,3,4,5})
+        instruction({0}),
+        clockRate(1000)
 {
     srand(time(nullptr));
 }
@@ -155,7 +156,6 @@ void CPU::emulateInstructions(RAM* ram, Screen* screen, const bool* keymap, uint
                         {
                             ram->getRegisters_V()[instruction.X] = i;
                             PC += 2;
-                            break;
                         }
                     }
                     break;
@@ -203,4 +203,8 @@ void CPU::emulateInstructions(RAM* ram, Screen* screen, const bool* keymap, uint
         default:
             break; // invalid instruction
     }
+}
+
+uint32_t CPU::getClockRate() const {
+    return clockRate;
 }

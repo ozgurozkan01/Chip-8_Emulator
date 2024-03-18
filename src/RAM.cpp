@@ -61,7 +61,7 @@ void RAM::loadFonts()
     memcpy(&memory[0], fontSet, sizeof(fontSet));
 }
 
-uint16_t RAM::getMaxRamSize() {return maxRamSize; }
+uint16_t RAM::getMaxRamSize() const {return maxRamSize; }
 uint8_t *RAM::getMemory() { return memory; }
 uint16_t RAM::getBeginningPoint() const { return ramBeginningPoint; }
 std::stack<uint16_t>& RAM::getStack() { return stack; }

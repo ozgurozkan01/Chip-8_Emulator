@@ -13,7 +13,7 @@ class Screen;
 class ROM;
 class CPU;
 
-enum EEmulatorState
+enum class EEmulatorState : uint8_t
 {
     RUNNING,
     QUIT,
@@ -44,6 +44,7 @@ private:
 
     void assignKeyMap();
     void processEvent();
+    void updateTimers();
 };
 
 

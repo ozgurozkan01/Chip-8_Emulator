@@ -13,7 +13,7 @@ public:
     RAM();
     ~RAM();
 
-    uint16_t getMaxRamSize();
+    uint16_t getMaxRamSize() const;
     uint8_t* getMemory();
     std::stack<uint16_t>& getStack();
     uint8_t* getRegisters_V();

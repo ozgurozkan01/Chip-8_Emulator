@@ -10,7 +10,7 @@
 
 Chip8::Chip8() :
         currentState(EEmulatorState::RUNNING),
-        rom(new ROM(R"(C:\Users\ozgur\GitHub\Chip-8_Emulator\ROMs\BC_test.ch8)")),
+        rom(new ROM("C:/Users/ozgur/GitHub/Chip-8_Emulator/ROMs/Tetris [Fran Dachille, 1991].ch8")),
         cpu(new CPU),
         ram(new RAM()),
         screen(new Screen()),
@@ -45,9 +45,15 @@ void Chip8::update()
 {
     while (currentState != EEmulatorState::QUIT)
     {
-        cpu->emulateInstructions(ram, screen, keymap, soundTimer, delayTimer);
+        // ClockRate / 60 minutes = instruction amount in a second (Hz)
+        for (uint32_t clock = 0; clock < cpu->getClockRate() / 60; ++clock)
+        {
+            cpu->emulateInstructions(ram, screen, keymap, soundTimer, delayTimer);
+        }
         screen->render();
         processEvent();
+        updateTimers();
+        SDL_Delay(cpu->getClockRate() / 60);
     }
 }
 
@@ -179,4 +185,10 @@ void Chip8::processEvent()
         }
     }
 
+}
+
+void Chip8::updateTimers()
+{
+    if (soundTimer > 0) soundTimer--;
+    if (delayTimer > 0) delayTimer--;
 }
