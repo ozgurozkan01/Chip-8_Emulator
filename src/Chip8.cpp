@@ -20,6 +20,8 @@ Chip8::Chip8() :
 
 bool Chip8::init()
 {
+    loadFonts();
+
     if (!rom->readRom(ram->getMemory(), ram->getBeginningPoint(), ram->getMaxRamSize()) ||
         !screen->init())
     {
@@ -39,6 +41,7 @@ Chip8::~Chip8()
 {
     delete ram;
     delete screen;
+    delete [] fontSet;
 }
 
 void Chip8::update()
@@ -191,4 +194,45 @@ void Chip8::updateTimers()
 {
     if (soundTimer > 0) soundTimer--;
     if (delayTimer > 0) delayTimer--;
+}
+
+void Chip8::loadFonts()
+{
+    /*
+     * For 7 number, how to look like this hex code
+     * 1111 0000
+     * 0001 0000
+     * 0010 0000
+     * 0100 0000
+     * 0100 0000
+     *
+     * Whole 1's are drawing 7 number
+     * */
+
+    // Set fonts
+    fontSet = new uint16_t[fontSize]
+            {
+                    0xF0, 0x90, 0x90, 0x90, 0xF0, // 0
+                    0x20, 0x60, 0x20, 0x20, 0x70, // 1
+                    0xF0, 0x10, 0xF0, 0x80, 0xF0, // 2
+                    0xF0, 0x10, 0xF0, 0x10, 0xF0, // 3
+                    0x90, 0x90, 0xF0, 0x10, 0x10, // 4
+                    0xF0, 0x80, 0xF0, 0x10, 0xF0, // 5
+                    0xF0, 0x80, 0xF0, 0x90, 0xF0, // 6
+                    0xF0, 0x10, 0x20, 0x40, 0x40, // 7
+                    0xF0, 0x90, 0xF0, 0x90, 0xF0, // 8
+                    0xF0, 0x90, 0xF0, 0x10, 0xF0, // 9
+                    0xF0, 0x90, 0xF0, 0x90, 0x90, // A
+                    0xE0, 0x90, 0xE0, 0x90, 0xE0, // B
+                    0xF0, 0x80, 0x80, 0x80, 0xF0, // C
+                    0xE0, 0x90, 0x90, 0x90, 0xE0, // D
+                    0xF0, 0x80, 0xF0, 0x80, 0xF0, // E
+                    0xF0, 0x80, 0xF0, 0x80, 0x80  // F
+            };
+
+    // Load into ram whole this fonts
+    for (int i = 0; i < fontSize; i++)
+    {
+        ram->getMemory()[i] = fontSet[i];
+    }
 }

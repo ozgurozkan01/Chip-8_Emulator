@@ -41,10 +41,13 @@ private:
     EEmulatorState currentState;
 
     bool* keymap;
+    uint16_t *fontSet;
+    const uint32_t fontSize = 80;
 
     void assignKeyMap();
     void processEvent();
     void updateTimers();
+    void loadFonts();
 };
 
 
