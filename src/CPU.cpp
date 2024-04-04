@@ -6,6 +6,7 @@
 #include "RAM.h"
 #include "Screen.h"
 #include <ctime>
+#include <iostream>
 
 CPU::CPU() :
         PC(0x200),
@@ -88,7 +89,7 @@ void CPU::emulateInstructions(RAM* ram, Screen* screen, const bool* keymap, uint
                     ram->getRegisters_V()[instruction.X] ^= ram->getRegisters_V()[instruction.Y];
                     break;
                 case 0x4:
-                    ram->getRegisters_V()[0x0F] = (uint16_t)(ram->getRegisters_V()[instruction.X] + ram->getRegisters_V()[instruction.Y]) > 0xFF;
+                    ram->getRegisters_V()[0x0F] = (ram->getRegisters_V()[instruction.X] + ram->getRegisters_V()[instruction.Y]) > 0xFF;
                     ram->getRegisters_V()[instruction.X] += ram->getRegisters_V()[instruction.Y];
                     break;
                 case 0x5:
@@ -96,7 +97,7 @@ void CPU::emulateInstructions(RAM* ram, Screen* screen, const bool* keymap, uint
                     ram->getRegisters_V()[instruction.X] -= ram->getRegisters_V()[instruction.Y];
                     break;
                 case 0x6:
-                    ram->getRegisters_V()[0x0F] = (ram->getRegisters_V()[instruction.X] & 1);
+                    ram->getRegisters_V()[0x0F] = (ram->getRegisters_V()[instruction.X] & 0x1);
                     ram->getRegisters_V()[instruction.X] >>= 1;
                     break;
                 case 0x7:
