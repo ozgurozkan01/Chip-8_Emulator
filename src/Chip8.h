@@ -12,6 +12,7 @@ class RAM;
 class Screen;
 class ROM;
 class CPU;
+class Audio;
 
 enum class EEmulatorState : uint8_t
 {
@@ -37,6 +38,7 @@ private:
     Screen* screen;
     ROM* rom;
     CPU* cpu;
+    Audio* audio;
 
     EEmulatorState currentState;
 
@@ -44,7 +46,6 @@ private:
     uint16_t *fontSet;
     const uint32_t fontSize = 80;
 
-    void assignKeyMap();
     void processEvent();
     void updateTimers();
     void loadFonts();
