@@ -3,7 +3,7 @@
 
 int main(int argc, char *argv[])
 {
-    Chip8 chip8_Emulator;
+    Chip8 chip8_Emulator("C:/Users/ozgur/GitHub/Chip-8_Emulator/ROMs/Brix [Andreas Gustafsson, 1990].ch8");
 
     if (chip8_Emulator.init())
     {
