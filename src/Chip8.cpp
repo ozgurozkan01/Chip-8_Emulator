@@ -7,15 +7,18 @@
 #include "Screen.h"
 #include "ROM.h"
 #include "CPU.h"
+#include "Audio.h"
 
 Chip8::Chip8() :
         currentState(EEmulatorState::RUNNING),
-        rom(new ROM("C:/Users/ozgur/GitHub/Chip-8_Emulator/ROMs/Tetris [Fran Dachille, 1991].ch8")),
-        cpu(new CPU),
+        rom(new ROM("C:/Users/ozgur/GitHub/Chip-8_Emulator/ROMs/Brix [Andreas Gustafsson, 1990].ch8")),
+        cpu(new CPU()),
         ram(new RAM()),
         screen(new Screen()),
+        audio(new Audio()),
         soundTimer(0),
-        delayTimer(0)
+        delayTimer(0),
+        keymap(new bool[16]{false})
 {}
 
 bool Chip8::init()
@@ -23,24 +26,21 @@ bool Chip8::init()
     loadFonts();
 
     if (!rom->readRom(ram->getMemory(), ram->getBeginningPoint(), ram->getMaxRamSize()) ||
-        !screen->init())
+        !screen->init() ||
+        !audio->init())
     {
+        printf("Chip8 could not be initialized : %s", SDL_GetError());
         return false;
     }
 
-    assignKeyMap();
     return true;
-}
-
-void Chip8::assignKeyMap()
-{
-    keymap = new bool[16]{false};
 }
 
 Chip8::~Chip8()
 {
     delete ram;
     delete screen;
+    delete audio;
     delete [] fontSet;
 }
 
@@ -192,7 +192,16 @@ void Chip8::processEvent()
 
 void Chip8::updateTimers()
 {
-    if (soundTimer > 0) soundTimer--;
+    if (soundTimer > 0)
+    {
+        soundTimer--;
+        audio->beep(0); // Play
+    }
+    else
+    {
+        audio->beep(1); // Stop
+    }
+
     if (delayTimer > 0) delayTimer--;
 }
 
