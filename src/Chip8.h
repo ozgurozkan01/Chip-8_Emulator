@@ -23,7 +23,7 @@ enum class EEmulatorState : uint8_t
 
 class Chip8 {
 public:
-    Chip8();
+    Chip8(const char *romName);
     ~Chip8();
 
     bool init();
