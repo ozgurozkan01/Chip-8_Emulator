@@ -1,9 +1,6 @@
 # Chip-8_Emulator
 Chip-8 Emulator with C++ and SDL2 to understand software and emulator architecture
 
-## Not Yet Done
-* Audio System
-
 ## Controls
 | Chip-8  | Keyboard |
 | ------------- | ------------- |
