@@ -9,9 +9,9 @@
 #include "CPU.h"
 #include "Audio.h"
 
-Chip8::Chip8() :
+Chip8::Chip8(const char *romName) :
         currentState(EEmulatorState::RUNNING),
-        rom(new ROM("C:/Users/ozgur/GitHub/Chip-8_Emulator/ROMs/Brix [Andreas Gustafsson, 1990].ch8")),
+        rom(new ROM(romName)),
         cpu(new CPU()),
         ram(new RAM()),
         screen(new Screen()),
