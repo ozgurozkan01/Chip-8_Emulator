@@ -16,6 +16,8 @@ Chip-8 Emulator with C++ and SDL2 to understand software and emulator architectu
 | <img src="./screenshots/IBM.png" width="400"> | <img src="./screenshots/BC_test.png" width="400"> | 
 | CHIP-8 LOGO              | TEST OPCODE              |
 | <img src="./screenshots/chip8.png" width="400"> | <img src="./screenshots/test_opcode.png" width="400"> |
+| TETRIS                   | PONG                     |
+| <img src="./screenshots/tetris.png" width="400"> | <img src="./screenshots/pong.png" width="400"> |
 
 ## Dependencies
 * SDL2
