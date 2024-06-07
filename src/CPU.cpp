@@ -34,7 +34,7 @@ void CPU::emulateInstructions(RAM* ram, Screen* screen, const bool* keymap, uint
         case 0x0:
             if (instruction.NNN == 0x0E0)
             {
-                screen->clearScreen();
+                screen->clear();
             }
             else if (instruction.NNN == 0x0EE)
             {
@@ -126,7 +126,7 @@ void CPU::emulateInstructions(RAM* ram, Screen* screen, const bool* keymap, uint
             ram->getRegisters_V()[instruction.X] = std::rand() & instruction.NN;
             break;
         case 0xD:
-            screen->setSpriteActivation(ram, instruction, I);
+            screen->setActiveSprite(ram, instruction, I);
             break;
         case 0xE:
             if (instruction.NN == 0x9E)
