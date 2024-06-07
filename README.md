@@ -19,14 +19,6 @@ Chip-8 Emulator with C++ and SDL2 to understand software and emulator architectu
 | TETRIS                   | PONG                     |
 | <img src="./screenshots/tetris.png" width="400"> | <img src="./screenshots/pong.png" width="400"> |
 
-## Dependencies
-* SDL2
-* Made in Windows11
-
 ## Resources
 * https://tobiasvl.github.io/blog/write-a-chip-8-emulator/
 * https://en.wikipedia.org/wiki/CHIP-8
-* https://www.youtube.com/watch?v=sH7UdYAXjDs&list=PLT7NbkyNWaqbyBMzdySdqjnfUFxt8rnU_&index=5
-
-At the same time, I tried to resolve what I could not understand by doing extra specific research on internet.
-But basically I followed the above three sources.
