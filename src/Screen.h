@@ -13,9 +13,9 @@ public:
     Screen();
     ~Screen();
     bool init();
-    void clearScreen();
+    void clear();
     void render();
-    void setSpriteActivation(class RAM* ram, struct Instructions& instruction, uint16_t I);
+    void setActiveSprite(class RAM* ram, struct Instructions& instruction, uint16_t I);
     void drawSprite();
 
 private:

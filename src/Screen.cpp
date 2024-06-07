@@ -82,12 +82,12 @@ void Screen::render()
     SDL_RenderPresent(renderer);
 }
 
-void Screen::clearScreen()
+void Screen::clear()
 {
     memset(&display[0], false, sizeof(display));
 }
 
-void Screen::setSpriteActivation(struct RAM *ram, struct Instructions& instruction, uint16_t I)
+void Screen::setActiveSprite(struct RAM *ram, struct Instructions& instruction, uint16_t I)
 {
     auto xCoord = ram->getRegisters_V()[instruction.X] & (screenWidth-1);
     auto yCoord = ram->getRegisters_V()[instruction.Y] & (screenHeight-1);
