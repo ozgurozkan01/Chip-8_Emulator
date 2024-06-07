@@ -46,21 +46,18 @@ Chip8::~Chip8()
 
 void Chip8::update()
 {
-    while (currentState != EEmulatorState::QUIT)
+    // ClockRate / 60 minutes = instruction amount in a second (Hz)
+    for (uint32_t clock = 0; clock < cpu->getClockRate() / 60; ++clock)
     {
-        // ClockRate / 60 minutes = instruction amount in a second (Hz)
-        for (uint32_t clock = 0; clock < cpu->getClockRate() / 60; ++clock)
-        {
-            cpu->emulateInstructions(ram, screen, keymap, soundTimer, delayTimer);
-        }
-        screen->render();
-        processEvent();
-        updateTimers();
-        SDL_Delay(cpu->getClockRate() / 60);
+        cpu->emulateInstructions(ram, screen, keymap, soundTimer, delayTimer);
     }
+    screen->render();
+    handleInput();
+    updateTimers();
+    SDL_Delay(cpu->getClockRate() / 60);
 }
 
-void Chip8::processEvent()
+void Chip8::handleInput()
 {
     SDL_Event event;
     while (SDL_PollEvent(&event))
@@ -244,4 +241,8 @@ void Chip8::loadFonts()
     {
         ram->getMemory()[i] = fontSet[i];
     }
+}
+
+bool Chip8::isRunning() {
+    return currentState != EEmulatorState::QUIT;
 }

@@ -27,6 +27,7 @@ public:
     ~Chip8();
 
     bool init();
+    bool isRunning();
     void update();
 
 private:
@@ -46,7 +47,7 @@ private:
     uint16_t *fontSet;
     const uint32_t fontSize = 80;
 
-    void processEvent();
+    void handleInput();
     void updateTimers();
     void loadFonts();
 };
