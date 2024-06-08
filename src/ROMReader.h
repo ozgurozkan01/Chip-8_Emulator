@@ -2,15 +2,15 @@
 // Created by ozgur on 09/03/2024.
 //
 
-#ifndef CHIP_8_EMULATOR_ROM_H
-#define CHIP_8_EMULATOR_ROM_H
+#ifndef CHIP_8_EMULATOR_ROMREADER_H
+#define CHIP_8_EMULATOR_ROMREADER_H
 
 #include <fstream>
 #include <cstdint>
 
-class ROM {
+class ROMReader {
 public:
-    ROM(const char *romName);
+    ROMReader(const char *romName);
     bool readRom(uint8_t* memory, const uint16_t& beginningPoint, const uint16_t& maxSize);
 private:
 
@@ -19,4 +19,4 @@ private:
 };
 
 
-#endif //CHIP_8_EMULATOR_ROM_H
+#endif //CHIP_8_EMULATOR_ROMREADER_H

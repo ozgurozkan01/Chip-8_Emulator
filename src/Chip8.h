@@ -10,7 +10,7 @@
 
 class RAM;
 class Screen;
-class ROM;
+class ROMReader;
 class CPU;
 class Audio;
 
@@ -37,7 +37,7 @@ private:
     // Components
     RAM* ram;
     Screen* screen;
-    ROM* rom;
+    ROMReader* rom;
     CPU* cpu;
     Audio* audio;
 

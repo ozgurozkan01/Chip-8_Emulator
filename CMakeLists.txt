@@ -11,8 +11,8 @@ add_executable(Chip_8_Emulator
         src/Screen.h
         src/RAM.cpp
         src/RAM.h
-        src/ROM.cpp
-        src/ROM.h
+        src/ROMReader.cpp
+        src/ROMReader.h
         src/CPU.cpp
         src/CPU.h
         src/Audio.cpp

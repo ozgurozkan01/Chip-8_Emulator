@@ -2,11 +2,11 @@
 // Created by ozgur on 09/03/2024.
 //
 
-#include "ROM.h"
+#include "ROMReader.h"
 
-ROM::ROM(const char *romName) :  romName(romName) {}
+ROMReader::ROMReader(const char *romName) : romName(romName) {}
 
-bool ROM::readRom(uint8_t* memory, const uint16_t& beginningPoint, const uint16_t& maxRamSize)
+bool ROMReader::readRom(uint8_t* memory, const uint16_t& beginningPoint, const uint16_t& maxRamSize)
 {
     // ROM files are binary based files.
     romStream.open(romName, std::ios_base::binary);

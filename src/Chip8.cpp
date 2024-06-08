@@ -5,13 +5,13 @@
 #include "Chip8.h"
 #include "RAM.h"
 #include "Screen.h"
-#include "ROM.h"
+#include "ROMReader.h"
 #include "CPU.h"
 #include "Audio.h"
 
 Chip8::Chip8(const char *romName) :
         currentState(EEmulatorState::RUNNING),
-        rom(new ROM(romName)),
+        rom(new ROMReader(romName)),
         cpu(new CPU()),
         ram(new RAM()),
         screen(new Screen()),
